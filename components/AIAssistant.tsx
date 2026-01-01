@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Loader2, Sparkles } from 'lucide-react';
@@ -15,7 +14,10 @@ const AIAssistant: React.FC = () => {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      scrollRef.current.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
     }
   }, [messages, loading]);
 
@@ -28,7 +30,7 @@ const AIAssistant: React.FC = () => {
     setLoading(true);
 
     const response = await getInsightResponse(userMsg);
-    setMessages(prev => [...prev, { role: 'ai', text: response || 'I apologize, but I am unable to retrieve that insight right now.' }]);
+    setMessages(prev => [...prev, { role: 'ai', text: response }]);
     setLoading(false);
   };
 
@@ -36,40 +38,39 @@ const AIAssistant: React.FC = () => {
     <>
       <button 
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 z-[150] bg-[#86BC25] text-black p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all group overflow-hidden"
+        className="fixed bottom-8 right-8 z-[150] bg-[#86BC25] text-black p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all group"
       >
-        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-        <MessageSquare size={24} className="relative z-10 group-hover:rotate-12 transition-transform" />
+        <MessageSquare size={24} className="group-hover:rotate-6 transition-transform" />
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.9, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, y: 50, scale: 0.9, filter: 'blur(10px)' }}
-            className="fixed bottom-24 right-8 z-[160] w-[calc(100vw-4rem)] md:w-[420px] h-[600px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.3)] rounded-2xl border border-gray-100 overflow-hidden flex flex-col"
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.9 }}
+            className="fixed bottom-24 right-8 z-[160] w-[calc(100vw-4rem)] md:w-[420px] h-[600px] bg-white shadow-2xl rounded-2xl border border-gray-100 overflow-hidden flex flex-col"
           >
             <div className="bg-black p-6 flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 bg-[#86BC25] rounded-full flex items-center justify-center font-black text-sm">V</div>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-[#86BC25] rounded-full flex items-center justify-center font-black text-xs">V.</div>
                 <div>
-                  <h4 className="text-white font-bold text-sm tracking-tight">Insight Assistant</h4>
+                  <h4 className="text-white font-bold text-sm tracking-tight">Vedartha Insights</h4>
                   <div className="flex items-center space-x-2">
                     <span className="flex h-2 w-2 relative">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
-                    <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Global Network Active</span>
+                    <span className="text-[10px] text-gray-400 uppercase font-black tracking-widest">Live Assistant</span>
                   </div>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white transition-colors p-2">
+              <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white transition-colors">
                 <X size={20} />
               </button>
             </div>
 
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-white custom-scrollbar">
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50/50 custom-scrollbar">
               {messages.map((m, i) => (
                 <motion.div 
                   key={i} 
@@ -77,10 +78,10 @@ const AIAssistant: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[85%] p-4 rounded-2xl text-[15px] leading-relaxed ${
+                  <div className={`max-w-[85%] p-4 rounded-xl text-[14px] leading-relaxed shadow-sm ${
                     m.role === 'user' 
-                      ? 'bg-[#86BC25] text-black font-semibold rounded-tr-none shadow-md' 
-                      : 'bg-gray-50 border border-gray-100 text-gray-800 rounded-tl-none'
+                      ? 'bg-[#86BC25] text-black font-semibold rounded-tr-none' 
+                      : 'bg-white border border-gray-100 text-gray-800 rounded-tl-none'
                   }`}>
                     {m.text}
                   </div>
@@ -88,35 +89,35 @@ const AIAssistant: React.FC = () => {
               ))}
               {loading && (
                 <div className="flex justify-start">
-                  <div className="bg-gray-50 border border-gray-100 p-4 rounded-2xl flex items-center space-x-3">
-                    <Loader2 size={18} className="animate-spin text-[#86BC25]" />
-                    <span className="text-xs text-gray-400 font-medium">Synthesizing insights...</span>
+                  <div className="bg-white border border-gray-100 p-4 rounded-xl flex items-center space-x-3 shadow-sm">
+                    <Loader2 size={16} className="animate-spin text-[#86BC25]" />
+                    <span className="text-xs text-gray-400 font-medium">Analyzing...</span>
                   </div>
                 </div>
               )}
             </div>
 
-            <div className="p-6 border-t border-gray-100 bg-white">
-              <div className="flex items-center space-x-3 bg-gray-100 rounded-xl p-2 focus-within:ring-2 ring-[#86BC25]/20 transition-all">
+            <div className="p-4 border-t border-gray-100 bg-white">
+              <div className="flex items-center space-x-2 bg-gray-100 rounded-lg p-1.5 focus-within:ring-2 ring-[#86BC25]/20 transition-all">
                 <input 
                   type="text" 
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                  placeholder="Ask about Generative AI or Sustainability..."
+                  placeholder="How can we help you?"
                   className="flex-1 bg-transparent border-none outline-none px-4 py-2 text-sm font-medium"
                 />
                 <button 
                   onClick={handleSend}
                   disabled={!query.trim() || loading}
-                  className="p-3 bg-black text-white rounded-lg hover:bg-[#86BC25] hover:text-black transition-all disabled:opacity-20 flex items-center justify-center"
+                  className="p-2.5 bg-black text-white rounded-md hover:bg-[#86BC25] hover:text-black transition-all disabled:opacity-30"
                 >
-                  {loading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                  <Send size={18} />
                 </button>
               </div>
-              <p className="text-[10px] text-gray-400 mt-3 text-center flex items-center justify-center space-x-1">
-                <span className="relative inline-block w-3 h-3"><Sparkles size={10} /></span>
-                <span>AI-generated content for informational purposes only.</span>
+              <p className="text-[9px] text-gray-400 mt-3 text-center flex items-center justify-center space-x-1">
+                <Sparkles size={10} className="text-[#86BC25]" />
+                <span className="uppercase tracking-widest font-black">AI-Powered Strategic Support</span>
               </p>
             </div>
           </motion.div>

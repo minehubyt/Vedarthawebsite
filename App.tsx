@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header.tsx';
@@ -7,6 +6,7 @@ import RevealVideoSection from './components/RevealVideoSection.tsx';
 import FeaturedContent from './components/FeaturedContent.tsx';
 import ServicesSection from './components/ServicesSection.tsx';
 import CareerSlideshow from './components/CareerSlideshow.tsx';
+import ImpactBanner from './components/ImpactBanner.tsx';
 import Footer from './components/Footer.tsx';
 import AIAssistant from './components/AIAssistant.tsx';
 import LegalPage from './pages/LegalPage.tsx';
@@ -48,7 +48,11 @@ const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handlePopState);
   }, []);
 
-  if (!isReady) return <div className="bg-black h-screen w-screen" />;
+  if (!isReady) return <div className="bg-white h-screen w-screen flex items-center justify-center">
+    <div className="flex items-center space-x-2">
+      <div className="w-12 h-12 border-4 border-[#86BC25] border-t-transparent rounded-full animate-spin" />
+    </div>
+  </div>;
 
   return (
     <div className="min-h-screen bg-white text-black selection:bg-[#86BC25] selection:text-black">
@@ -70,13 +74,14 @@ const App: React.FC = () => {
               <div className="sticky top-0 z-10 h-screen overflow-hidden">
                 <Hero />
               </div>
-              <div className="relative z-20 shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
+              <div className="relative z-20 shadow-[0_-50px_100px_rgba(0,0,0,0.9)] bg-black">
                 <RevealVideoSection />
               </div>
             </div>
             <main className="relative z-30 bg-white">
               <FeaturedContent />
               <ServicesSection />
+              <ImpactBanner />
               <CareerSlideshow />
             </main>
           </motion.div>
