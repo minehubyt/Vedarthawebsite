@@ -47,12 +47,12 @@ const ServicesSection: React.FC = () => {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="lg:w-1/2"
             >
-              <span className="text-deloitte-green font-bold uppercase tracking-[0.4em] text-[10px] mb-8 block">
+              <span className="text-[#86BC25] font-bold uppercase tracking-[0.4em] text-[10px] mb-8 block">
                 Expertise & Capabilities
               </span>
               <h2 className="text-5xl md:text-8xl font-black mb-10 leading-[0.95] tracking-tighter text-black">
                 Redefining the <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-deloitte-green to-green-300">impossible.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86BC25] to-green-300">impossible.</span>
               </h2>
               <p className="text-2xl text-gray-500 max-w-xl font-light leading-relaxed">
                 We don't just solve problems; we identify opportunities before they arise. Our integrated approach ensures that every solution is built for resilience.
@@ -71,10 +71,10 @@ const ServicesSection: React.FC = () => {
                       className="group flex items-center justify-between border-b border-gray-100 pb-8 cursor-pointer"
                     >
                       <div className="flex items-center space-x-8">
-                        <span className="text-gray-300 font-black text-2xl group-hover:text-deloitte-green transition-colors">0{i+1}</span>
+                        <span className="text-gray-300 font-black text-2xl group-hover:text-[#86BC25] transition-colors">0{i+1}</span>
                         <h3 className="text-3xl font-bold tracking-tight group-hover:translate-x-4 transition-transform duration-500">{item}</h3>
                       </div>
-                      <ArrowUpRight className="text-gray-200 group-hover:text-deloitte-green group-hover:rotate-45 transition-all duration-500" size={32} />
+                      <ArrowUpRight className="text-gray-200 group-hover:text-[#86BC25] group-hover:rotate-45 transition-all duration-500" size={32} />
                     </motion.div>
                   ))}
                </div>
@@ -104,7 +104,7 @@ const ServicesSection: React.FC = () => {
 
                   <div className="absolute inset-0 z-10 p-12 flex flex-col justify-between">
                     <div>
-                      <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:bg-deloitte-green group-hover:text-white transition-all duration-500 mb-12">
+                      <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:bg-[#86BC25] group-hover:text-white transition-all duration-500 mb-12">
                         <IconComp size={32} className="group-hover:scale-110 transition-transform duration-500" />
                       </div>
                       <h4 className="text-3xl font-black mb-6 tracking-tighter group-hover:text-white transition-colors">
@@ -125,7 +125,7 @@ const ServicesSection: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="absolute top-0 left-0 w-full h-1 bg-deloitte-green scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+                  <div className="absolute top-0 left-0 w-full h-1 bg-[#86BC25] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
                 </motion.div>
               );
             })}

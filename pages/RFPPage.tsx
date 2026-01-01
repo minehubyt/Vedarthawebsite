@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Share2, Facebook, Linkedin, Mail, Twitter, ChevronDown, Upload, FileText, CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Share2, Linkedin, Twitter, CheckCircle2, ArrowRight, ArrowLeft, Upload } from 'lucide-react';
 
 const RFPPage: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -49,7 +49,7 @@ const RFPPage: React.FC = () => {
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">Success.</h1>
           <p className="text-xl text-gray-400 font-light leading-relaxed mb-12">
-            Your proposal has been securely transmitted. A Deloitte partner specializing in your industry will be in touch within 24 hours to begin the conversation.
+            Your proposal has been securely transmitted. A Vedartha partner specializing in your industry will be in touch within 24 hours to begin the conversation.
           </p>
           <button 
             onClick={() => window.location.hash = ''}
@@ -65,7 +65,6 @@ const RFPPage: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen flex flex-col lg:flex-row">
-      {/* Left Panel: Static/Sticky Brand Panel */}
       <div className="lg:w-2/5 bg-black text-white p-12 lg:px-24 pt-32 lg:pt-48 flex flex-col justify-between lg:sticky lg:top-0 lg:h-screen">
         <div className="relative z-10">
           <motion.div
@@ -91,10 +90,8 @@ const RFPPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Panel: Scrollable Form Panel */}
       <div className="lg:w-3/5 p-12 lg:p-32 lg:pt-48 bg-white">
         <div className="max-w-3xl">
-          {/* Progress Indicator */}
           <div className="mb-20 flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <span className="text-5xl font-black text-black">{step < 10 ? `0${step}` : step}</span>
@@ -141,32 +138,6 @@ const RFPPage: React.FC = () => {
                     ))}
                   </div>
 
-                  <AnimatePresence>
-                    {formData.serviceLine === 'Other' && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="relative group pt-4">
-                          <input 
-                            type="text" 
-                            name="otherService"
-                            placeholder=" "
-                            required
-                            value={formData.otherService}
-                            onChange={handleChange}
-                            className="peer w-full bg-transparent border-b-2 border-gray-100 py-4 outline-none focus:border-[#86BC25] transition-colors font-light text-2xl"
-                          />
-                          <label className="absolute left-0 top-8 text-gray-400 font-light text-2xl pointer-events-none transition-all peer-focus:-top-4 peer-focus:text-sm peer-focus:text-[#86BC25] peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-sm">
-                            Please specify your requirement
-                          </label>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                  
                   <div className="pt-12">
                     <button
                       type="button"
@@ -209,20 +180,6 @@ const RFPPage: React.FC = () => {
                         First Name
                       </label>
                     </div>
-                    <div className="relative group">
-                      <input 
-                        type="text" 
-                        name="lastName"
-                        placeholder=" "
-                        required
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        className="peer w-full bg-transparent border-b-2 border-gray-100 py-4 outline-none focus:border-[#86BC25] transition-colors font-light text-2xl"
-                      />
-                      <label className="absolute left-0 top-4 text-gray-400 font-light text-2xl pointer-events-none transition-all peer-focus:-top-8 peer-focus:text-sm peer-focus:text-[#86BC25] peer-[:not(:placeholder-shown)]:-top-8 peer-[:not(:placeholder-shown)]:text-sm">
-                        Last Name
-                      </label>
-                    </div>
                     <div className="relative group md:col-span-2">
                       <input 
                         type="email" 
@@ -235,34 +192,6 @@ const RFPPage: React.FC = () => {
                       />
                       <label className="absolute left-0 top-4 text-gray-400 font-light text-2xl pointer-events-none transition-all peer-focus:-top-8 peer-focus:text-sm peer-focus:text-[#86BC25] peer-[:not(:placeholder-shown)]:-top-8 peer-[:not(:placeholder-shown)]:text-sm">
                         Business Email
-                      </label>
-                    </div>
-                    <div className="relative group">
-                      <input 
-                        type="text" 
-                        name="company"
-                        placeholder=" "
-                        required
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="peer w-full bg-transparent border-b-2 border-gray-100 py-4 outline-none focus:border-[#86BC25] transition-colors font-light text-2xl"
-                      />
-                      <label className="absolute left-0 top-4 text-gray-400 font-light text-2xl pointer-events-none transition-all peer-focus:-top-8 peer-focus:text-sm peer-focus:text-[#86BC25] peer-[:not(:placeholder-shown)]:-top-8 peer-[:not(:placeholder-shown)]:text-sm">
-                        Organization
-                      </label>
-                    </div>
-                    <div className="relative group">
-                      <input 
-                        type="text" 
-                        name="jobTitle"
-                        placeholder=" "
-                        required
-                        value={formData.jobTitle}
-                        onChange={handleChange}
-                        className="peer w-full bg-transparent border-b-2 border-gray-100 py-4 outline-none focus:border-[#86BC25] transition-colors font-light text-2xl"
-                      />
-                      <label className="absolute left-0 top-4 text-gray-400 font-light text-2xl pointer-events-none transition-all peer-focus:-top-8 peer-focus:text-sm peer-focus:text-[#86BC25] peer-[:not(:placeholder-shown)]:-top-8 peer-[:not(:placeholder-shown)]:text-sm">
-                        Job Title
                       </label>
                     </div>
                   </div>
@@ -299,7 +228,7 @@ const RFPPage: React.FC = () => {
                 >
                   <div className="space-y-4">
                     <h2 className="text-4xl lg:text-5xl font-black tracking-tight text-black">The final details.</h2>
-                    <p className="text-gray-500 text-xl font-light">Outline your objectives and attach relevant documents to speed up the process.</p>
+                    <p className="text-gray-500 text-xl font-light">Outline your objectives and attach relevant documents.</p>
                   </div>
                   
                   <div className="space-y-12">
@@ -318,12 +247,6 @@ const RFPPage: React.FC = () => {
                       </label>
                     </div>
 
-                    <div className="p-16 border-2 border-dashed border-gray-100 bg-gray-50 rounded-sm text-center group cursor-pointer hover:border-[#86BC25] hover:bg-white transition-all">
-                      <Upload size={48} className="mx-auto text-gray-300 group-hover:text-[#86BC25] mb-6 transition-colors" />
-                      <h4 className="text-2xl font-bold mb-2">Attach RFP Document</h4>
-                      <p className="text-sm text-gray-400 font-light">Drag and drop files here or click to browse (Max 10MB)</p>
-                    </div>
-
                     <div className="flex items-start space-x-5">
                       <input 
                         type="checkbox" 
@@ -335,7 +258,7 @@ const RFPPage: React.FC = () => {
                         className="mt-1 w-6 h-6 accent-[#86BC25] border-2 border-gray-200" 
                       />
                       <label htmlFor="consent" className="text-sm text-gray-500 font-light leading-relaxed">
-                        I acknowledge that the information provided will be used to process my request in accordance with the <a href="#" className="text-black font-bold hover:underline">Deloitte Privacy Statement</a>. I understand that a Deloitte representative may contact me to follow up on this proposal.
+                        I acknowledge that the information provided will be used to process my request in accordance with the <a href="#" className="text-black font-bold hover:underline">Vedartha Privacy Statement</a>.
                       </label>
                     </div>
                   </div>

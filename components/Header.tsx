@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Globe, Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { NAV_ITEMS } from '../constants.tsx';
@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
               onClick={onLogoClick}
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
-              <span className="text-white text-[28px] font-black tracking-tighter">Deloitte</span>
+              <span className="text-white text-[28px] font-black tracking-tighter">Vedartha</span>
               <div className="w-[8px] h-[8px] bg-[#86BC25] rounded-full mt-[11px] ml-0.5" />
             </div>
 

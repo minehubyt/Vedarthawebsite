@@ -2,13 +2,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Loader2, Sparkles } from 'lucide-react';
-import { getInsightResponse } from '../services/gemini';
+import { getInsightResponse } from '../services/gemini.ts';
 
 const AIAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState<{ role: 'user' | 'ai', text: string }[]>([
-    { role: 'ai', text: 'Welcome to Deloitte. I am your Insight Assistant. How can I help you navigate our perspectives today?' }
+    { role: 'ai', text: 'Welcome to Vedartha. I am your Insight Assistant. How can I help you navigate our perspectives today?' }
   ]);
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ const AIAssistant: React.FC = () => {
           >
             <div className="bg-black p-6 flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 bg-[#86BC25] rounded-full flex items-center justify-center font-black text-sm">D</div>
+                <div className="w-10 h-10 bg-[#86BC25] rounded-full flex items-center justify-center font-black text-sm">V</div>
                 <div>
                   <h4 className="text-white font-bold text-sm tracking-tight">Insight Assistant</h4>
                   <div className="flex items-center space-x-2">
@@ -115,7 +115,7 @@ const AIAssistant: React.FC = () => {
                 </button>
               </div>
               <p className="text-[10px] text-gray-400 mt-3 text-center flex items-center justify-center space-x-1">
-                <Sparkles size={10} />
+                <span className="relative inline-block w-3 h-3"><Sparkles size={10} /></span>
                 <span>AI-generated content for informational purposes only.</span>
               </p>
             </div>

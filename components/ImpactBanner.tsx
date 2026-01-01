@@ -27,15 +27,15 @@ const ImpactBanner: React.FC = () => {
           </p>
           <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-12 text-white">
             <div>
-              <div className="text-4xl md:text-5xl font-extrabold text-deloitte-green mb-2">50%</div>
+              <div className="text-4xl md:text-5xl font-extrabold text-[#86BC25] mb-2">50%</div>
               <div className="text-xs uppercase tracking-widest font-bold">Carbon reduction by 2030</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-extrabold text-deloitte-green mb-2">$1B+</div>
+              <div className="text-4xl md:text-5xl font-extrabold text-[#86BC25] mb-2">$1B+</div>
               <div className="text-xs uppercase tracking-widest font-bold">Invested in social impact</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-extrabold text-deloitte-green mb-2">10M+</div>
+              <div className="text-4xl md:text-5xl font-extrabold text-[#86BC25] mb-2">10M+</div>
               <div className="text-xs uppercase tracking-widest font-bold">Lives impacted globally</div>
             </div>
           </div>

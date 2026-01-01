@@ -2,18 +2,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
-import StickyHeader from './StickyHeader';
+import StickyHeader from './StickyHeader.tsx';
 
 const CAREER_SLIDES = [
   {
     title: "Join our team of pioneers.",
-    description: "At Deloitte, you'll have the opportunity to work with some of the world's most innovative organizations and help them solve their most complex problems.",
+    description: "At Vedartha, you'll have the opportunity to work with some of the world's most innovative organizations and help them solve their most complex problems.",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2070",
     label: "Experienced Professionals"
   },
   {
     title: "Shape the future, your way.",
-    description: "Whether you're just starting your career or looking for your next challenge, Deloitte provides a culture of inclusion and growth.",
+    description: "Whether you're just starting your career or looking for your next challenge, Vedartha provides a culture of inclusion and growth.",
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=2070",
     label: "Students & Graduates"
   },
@@ -21,7 +21,7 @@ const CAREER_SLIDES = [
     title: "Make an impact that matters.",
     description: "We're looking for individuals with diverse perspectives and a passion for making a difference.",
     image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=2074",
-    label: "Life at Deloitte"
+    label: "Life at Vedartha"
   }
 ];
 
@@ -33,7 +33,6 @@ const CareerSlideshow: React.FC = () => {
 
   return (
     <section className="bg-white relative">
-      {/* Carrers Sticky Header - Sticks to top when main nav is hidden */}
       <StickyHeader title="Careers" bgColor="bg-[#86BC25]" />
       
       <div className="relative min-h-[90vh] flex flex-col lg:flex-row bg-black overflow-hidden">
@@ -46,7 +45,7 @@ const CareerSlideshow: React.FC = () => {
               exit={{ opacity: 0, x: 30 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="text-deloitte-green font-bold uppercase tracking-[0.2em] text-[10px] mb-6 block">
+              <span className="text-[#86BC25] font-bold uppercase tracking-[0.2em] text-[10px] mb-6 block">
                 {CAREER_SLIDES[active].label}
               </span>
               <h2 className="text-5xl lg:text-8xl font-black mb-10 leading-[0.9] tracking-tighter">
@@ -55,7 +54,7 @@ const CareerSlideshow: React.FC = () => {
               <p className="text-xl text-gray-400 mb-14 max-w-lg leading-relaxed font-light">
                 {CAREER_SLIDES[active].description}
               </p>
-              <button className="group flex items-center space-x-6 bg-white text-black px-10 py-5 rounded-full font-bold hover:bg-deloitte-green hover:text-white transition-all duration-300 shadow-2xl">
+              <button className="group flex items-center space-x-6 bg-white text-black px-10 py-5 rounded-full font-bold hover:bg-[#86BC25] hover:text-white transition-all duration-300 shadow-2xl">
                 <span className="text-sm uppercase tracking-widest">Explore careers</span>
                 <ArrowRight className="group-hover:translate-x-3 transition-transform duration-300" />
               </button>
@@ -100,14 +99,13 @@ const CareerSlideshow: React.FC = () => {
             </motion.div>
           </AnimatePresence>
           
-          {/* Progress Indicator Dots */}
           <div className="absolute bottom-10 right-10 flex space-x-3 z-20">
             {CAREER_SLIDES.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
-                  active === i ? 'bg-deloitte-green w-10' : 'bg-white/30 hover:bg-white/60'
+                  active === i ? 'bg-[#86BC25] w-10' : 'bg-white/30 hover:bg-white/60'
                 }`}
               />
             ))}

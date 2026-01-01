@@ -9,7 +9,7 @@ interface StickyHeaderProps {
 
 const StickyHeader: React.FC<StickyHeaderProps> = ({ 
   title, 
-  bgColor = "bg-deloitte-green", 
+  bgColor = "bg-brand-green", 
   textColor = "text-white" 
 }) => {
   return (

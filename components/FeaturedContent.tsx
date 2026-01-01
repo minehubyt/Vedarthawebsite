@@ -14,9 +14,9 @@ const FeaturedContent: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-black">Latest Insights</h2>
-              <div className="h-1.5 w-24 bg-deloitte-green" />
+              <div className="h-1.5 w-24 bg-[#86BC25]" />
             </div>
-            <button className="flex items-center space-x-2 text-black font-bold hover:text-deloitte-green transition-colors group">
+            <button className="flex items-center space-x-2 text-black font-bold hover:text-[#86BC25] transition-colors group">
               <span>View all perspectives</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
@@ -30,7 +30,7 @@ const FeaturedContent: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="group cursor-pointer bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border-b-4 border-transparent hover:border-deloitte-green rounded-sm"
+                className="group cursor-pointer bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border-b-4 border-transparent hover:border-[#86BC25] rounded-sm"
               >
                 <div className="relative h-64 overflow-hidden">
                   <img 
@@ -45,10 +45,10 @@ const FeaturedContent: React.FC = () => {
                   </div>
                 </div>
                 <div className="p-8">
-                  <span className="text-deloitte-green text-xs font-bold uppercase tracking-widest mb-3 block">
+                  <span className="text-[#86BC25] text-xs font-bold uppercase tracking-widest mb-3 block">
                     {article.category}
                   </span>
-                  <h3 className="text-xl font-bold mb-4 line-clamp-2 min-h-[3.5rem] group-hover:text-deloitte-green transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-4 line-clamp-2 min-h-[3.5rem] group-hover:text-[#86BC25] transition-colors duration-300">
                     {article.title}
                   </h3>
                   <p className="text-gray-600 text-sm line-clamp-3 mb-6 font-light">

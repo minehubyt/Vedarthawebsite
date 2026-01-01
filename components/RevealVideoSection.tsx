@@ -47,7 +47,7 @@ const RevealVideoSection: React.FC = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-5xl"
           >
-            <span className="text-deloitte-green font-bold uppercase tracking-[0.4em] text-[10px] mb-8 block">
+            <span className="text-[#86BC25] font-bold uppercase tracking-[0.4em] text-[10px] mb-8 block">
               Perspective
             </span>
             
@@ -68,10 +68,10 @@ const RevealVideoSection: React.FC = () => {
             className="flex flex-wrap justify-center gap-6"
           >
             <button className="group relative overflow-hidden bg-white text-black px-12 py-4 rounded-full font-bold text-sm transition-all duration-500 shadow-2xl hover:text-white">
-              <div className="absolute inset-0 bg-deloitte-green translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#86BC25] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <span className="relative z-10">Our Global Approach</span>
             </button>
-            <button className="group relative overflow-hidden border border-white/30 text-white px-12 py-4 rounded-full font-bold text-sm transition-all duration-500 hover:border-deloitte-green">
+            <button className="group relative overflow-hidden border border-white/30 text-white px-12 py-4 rounded-full font-bold text-sm transition-all duration-500 hover:border-[#86BC25]">
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative z-10">Success Stories</span>
             </button>
