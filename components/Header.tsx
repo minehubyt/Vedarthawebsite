@@ -33,18 +33,18 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
   return (
     <div className="relative z-[310]">
       <header 
-        className={`fixed top-0 left-0 right-0 z-[320] transition-all duration-500 h-[80px] flex items-center ${
+        className={`fixed top-0 left-0 right-0 z-[320] transition-all duration-500 h-[clamp(60px,8vh,80px)] flex items-center ${
           scrolled || activeTab ? 'bg-black/95 backdrop-blur-md shadow-2xl' : 'bg-transparent'
         } border-b border-white/10`}
       >
         <div className="container mx-auto px-6 lg:px-[8vw] flex items-center justify-between max-w-[1800px]">
-          <div className="flex items-center space-x-12">
+          <div className="flex items-center space-x-6 lg:space-x-12">
             <div 
               onClick={onLogoClick}
               className="flex items-center group cursor-pointer flex-shrink-0"
             >
-              <span className="text-white text-[28px] font-black tracking-tighter">Vedartha</span>
-              <div className="w-[8px] h-[8px] bg-[#86BC25] rounded-full mt-[11px] ml-0.5" />
+              <span className="text-white text-[clamp(20px,2.5vw,28px)] font-black tracking-tighter">Vedartha</span>
+              <div className="w-[clamp(6px,0.8vw,8px)] h-[clamp(6px,0.8vw,8px)] bg-[#86BC25] rounded-full mt-[clamp(8px,1vw,11px)] ml-0.5" />
             </div>
 
             <nav className="hidden lg:flex items-center space-x-8">
@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
                 <div key={item.label} className="relative">
                   <button 
                     onClick={() => handleTabClick(item.label)}
-                    className={`text-[13px] font-bold flex items-center space-x-1.5 transition-all group py-2 ${
+                    className={`text-[clamp(11px,1vw,13px)] font-bold flex items-center space-x-1.5 transition-all group py-2 ${
                       activeTab === item.label ? 'text-[#86BC25]' : 'text-white hover:text-[#86BC25]'
                     }`}
                   >
@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
             </nav>
           </div>
 
-          <div className="flex items-center space-x-8 text-white">
+          <div className="flex items-center space-x-4 lg:space-x-8 text-white">
             <div className="hidden lg:flex items-center space-x-6">
               <div className="flex items-center space-x-2 cursor-pointer hover:text-[#86BC25] transition-colors">
                 <Search size={18} />
@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
             </div>
             
             <button 
-              className="lg:hidden p-2 text-white"
+              className="lg:hidden p-2 text-white hover:text-[#86BC25] transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -95,13 +95,41 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
       </header>
 
       <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            className="fixed inset-0 bg-black z-[350] lg:hidden p-8 pt-24"
+          >
+            <div className="space-y-8">
+              {NAV_ITEMS.map((item) => (
+                <button
+                  key={item.label}
+                  onClick={() => {
+                    if (!item.children) {
+                      setMobileMenuOpen(false);
+                      onLinkClick?.(item.label.toLowerCase().replace(/\s+/g, '-'));
+                    }
+                  }}
+                  className="block text-3xl font-bold text-white uppercase tracking-tighter hover:text-[#86BC25] transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {activeTab && currentNavData?.children && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-[80px] left-0 right-0 z-[315] bg-[#111] text-white shadow-2xl overflow-hidden"
+            className="fixed top-[clamp(60px,8vh,80px)] left-0 right-0 z-[315] bg-[#111] text-white shadow-2xl overflow-hidden"
           >
             <div className="flex flex-col lg:flex-row min-h-[550px]">
               <div className="w-full lg:w-[320px] bg-[#1a1a1a] py-8 border-r border-white/5">
@@ -124,7 +152,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
                 ))}
               </div>
 
-              <div className="flex-1 p-12 lg:p-16 bg-[#111] grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 overflow-y-auto max-h-[70vh]">
+              <div className="flex-1 p-8 lg:p-16 bg-[#111] grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 lg:gap-y-8 overflow-y-auto max-h-[70vh]">
                 {currentNavData.children.sections[activeSectionIdx].items.map((item) => (
                   <button
                     key={item.label}
@@ -134,7 +162,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
                       else if (item.label === 'Submit RFP') onLinkClick?.('rfp');
                       setActiveTab(null);
                     }}
-                    className="text-[22px] font-light text-gray-300 hover:text-[#86BC25] transition-all block w-fit text-left hover:translate-x-2"
+                    className="text-[clamp(18px,2vw,22px)] font-light text-gray-300 hover:text-[#86BC25] transition-all block w-fit text-left hover:translate-x-2"
                   >
                     {item.label}
                   </button>
@@ -157,7 +185,7 @@ const Header: React.FC<HeaderProps> = ({ onLogoClick, onLinkClick }) => {
                       alt="Featured"
                     />
                   </div>
-                  <h5 className="text-[24px] font-bold leading-tight group-hover:text-[#86BC25] transition-colors">{currentNavData.children.featured?.subtitle}</h5>
+                  <h5 className="text-[clamp(20px,1.5vw,24px)] font-bold leading-tight group-hover:text-[#86BC25] transition-colors">{currentNavData.children.featured?.subtitle}</h5>
                   <p className="text-gray-500 mt-4 text-sm font-light">Explore our latest perspectives on global trends and strategic evolution.</p>
                 </div>
               </div>

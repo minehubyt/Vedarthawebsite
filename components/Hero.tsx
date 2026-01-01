@@ -88,11 +88,11 @@ const Hero: React.FC = () => {
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <span className="text-white text-[clamp(1rem,1.5vw,1.3rem)] font-light mb-4 block tracking-tight opacity-90 uppercase tracking-[0.1em]">
+              <span className="text-white text-[clamp(0.875rem,1.5vw,1.1rem)] font-light mb-4 block tracking-[0.2em] opacity-90 uppercase">
                 {slide.title}
               </span>
               
-              <h1 className="text-white text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[1.05] mb-8 tracking-tighter">
+              <h1 className="text-white text-[clamp(2.5rem,6.5vw,6rem)] font-bold leading-[1.05] mb-8 tracking-tighter">
                 {slide.headline.split('.').map((part, i) => (
                   <React.Fragment key={i}>
                     {part}{i === 0 && part.length > 0 && '.'}
@@ -101,11 +101,11 @@ const Hero: React.FC = () => {
                 ))}
               </h1>
 
-              <p className="text-gray-300 text-[clamp(1rem,1.2vw,1.25rem)] leading-relaxed mb-12 max-w-2xl font-light">
+              <p className="text-gray-300 text-[clamp(1rem,1.25vw,1.35rem)] leading-relaxed mb-12 max-w-2xl font-light">
                 {slide.description}
               </p>
 
-              <button className={`${slide.ctaColor} hover:brightness-110 px-12 py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-500 shadow-2xl transform hover:-translate-y-1`}>
+              <button className={`${slide.ctaColor} hover:brightness-110 px-8 sm:px-12 py-4 rounded-full font-bold text-xs sm:text-sm tracking-widest uppercase transition-all duration-500 shadow-2xl transform hover:-translate-y-1`}>
                 {slide.cta}
               </button>
             </motion.div>
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
         </div>
       </motion.div>
 
-      <div className="absolute bottom-16 left-6 lg:left-[8vw] z-30 flex items-center space-x-8">
+      <div className="absolute bottom-8 sm:bottom-16 left-6 lg:left-[8vw] z-30 flex items-center space-x-8">
         <div className="flex space-x-3">
           {SLIDES.map((_, i) => (
             <button
@@ -122,12 +122,12 @@ const Hero: React.FC = () => {
               className="group py-2 flex items-center"
             >
               <div className={`h-[3px] rounded-full transition-all duration-700 ${
-                current === i ? 'w-12 bg-white' : 'w-5 bg-white/20 group-hover:bg-white/50'
+                current === i ? 'w-8 sm:w-12 bg-white' : 'w-3 sm:w-5 bg-white/20 group-hover:bg-white/50'
               }`} />
             </button>
           ))}
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="hidden sm:flex items-center space-x-4">
           <div className="h-[1px] w-8 bg-white/20" />
           <span className="text-white/60 text-[10px] font-black tracking-[0.5em] uppercase">
             0{current + 1} / 0{SLIDES.length}

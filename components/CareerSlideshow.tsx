@@ -36,7 +36,7 @@ const CareerSlideshow: React.FC = () => {
       <StickyHeader title="Careers" bgColor="bg-[#86BC25]" />
       
       <div className="relative min-h-[90vh] flex flex-col lg:flex-row bg-black overflow-hidden">
-        <div className="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center bg-black text-white order-2 lg:order-1">
+        <div className="lg:w-1/2 p-8 sm:p-12 lg:p-24 flex flex-col justify-center bg-black text-white order-2 lg:order-1">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -45,41 +45,41 @@ const CareerSlideshow: React.FC = () => {
               exit={{ opacity: 0, x: 30 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="text-[#86BC25] font-bold uppercase tracking-[0.2em] text-[10px] mb-6 block">
+              <span className="text-[#86BC25] font-bold uppercase tracking-[0.2em] text-[10px] sm:text-[11px] mb-4 sm:mb-6 block">
                 {CAREER_SLIDES[active].label}
               </span>
-              <h2 className="text-5xl lg:text-8xl font-black mb-10 leading-[0.9] tracking-tighter">
+              <h2 className="text-[clamp(2.5rem,8vw,7.5rem)] font-black mb-8 sm:mb-10 leading-[0.9] tracking-tighter">
                 {CAREER_SLIDES[active].title}
               </h2>
-              <p className="text-xl text-gray-400 mb-14 max-w-lg leading-relaxed font-light">
+              <p className="text-lg sm:text-xl text-gray-400 mb-10 sm:mb-14 max-w-lg leading-relaxed font-light">
                 {CAREER_SLIDES[active].description}
               </p>
-              <button className="group flex items-center space-x-6 bg-white text-black px-10 py-5 rounded-full font-bold hover:bg-[#86BC25] hover:text-white transition-all duration-300 shadow-2xl">
-                <span className="text-sm uppercase tracking-widest">Explore careers</span>
+              <button className="group flex items-center space-x-6 bg-white text-black px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold hover:bg-[#86BC25] hover:text-white transition-all duration-300 shadow-2xl">
+                <span className="text-xs sm:text-sm uppercase tracking-widest">Explore careers</span>
                 <ArrowRight className="group-hover:translate-x-3 transition-transform duration-300" />
               </button>
             </motion.div>
           </AnimatePresence>
 
-          <div className="flex space-x-6 mt-20">
+          <div className="flex space-x-4 sm:space-x-6 mt-12 sm:mt-20">
             <button 
               onClick={prev} 
-              className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
               aria-label="Previous slide"
             >
-              <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+              <ChevronLeft size={22} className="group-hover:-translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={next} 
-              className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
               aria-label="Next slide"
             >
-              <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+              <ChevronRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
 
-        <div className="lg:w-1/2 relative min-h-[50vh] lg:min-h-full order-1 lg:order-2">
+        <div className="lg:w-1/2 relative min-h-[40vh] sm:min-h-[50vh] lg:min-h-full order-1 lg:order-2">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -99,13 +99,13 @@ const CareerSlideshow: React.FC = () => {
             </motion.div>
           </AnimatePresence>
           
-          <div className="absolute bottom-10 right-10 flex space-x-3 z-20">
+          <div className="absolute bottom-6 sm:bottom-10 right-6 sm:right-10 flex space-x-3 z-20">
             {CAREER_SLIDES.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
-                  active === i ? 'bg-[#86BC25] w-10' : 'bg-white/30 hover:bg-white/60'
+                className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-500 ${
+                  active === i ? 'bg-[#86BC25] w-6 sm:w-10' : 'bg-white/30 hover:bg-white/60'
                 }`}
               />
             ))}
